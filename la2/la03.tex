@@ -1,0 +1,47 @@
+\subsection{Eigenwerte}
+Es ist wünschenswert, lineare Abbildungen mit möglichst einfachen Matrizen
+darstellen zu können. In diesem Kapitel werden Endomorphismen eines Vektorraums
+betrachtet und eine Basis gesucht, so dass die darstellende Matrix möglichst
+einfach (im idealen Fall eine Diagonalmatrix) ist.
+
+\begin{definition} Für einen Endomorphismus $F$  von $V$ heißt ein $\lambda \in
+K$ \textbf{Eigenwert} von $F$, falls ein $v \in V \setminus \{ 0 \}$ mit $F(v) =
+\lambda \cdot v$ existiert. $v$ heißt in diesem Fall ein \textbf{Eigenvektor}
+zum Eigenwert $\lambda$.
+\end{definition}
+
+\begin{definition} Ein Endomorphismus heißt \textbf{diagonalisierbar}, wenn eine
+Basis aus Eigenvektoren existiert. (Für $\text{dim}V = n < \infty$ ist ein
+Endomorphismus $F$ genau dann diagonalisierbar, wenn es eine Basis $\mathcal{B}$
+gibt, so dass  $M_{\mathcal{B}}(F)$ eine Diagonalmatrix ist.)
+\end{definition}
+
+\begin{lemma} Eigenwerte $w_1$, $\ldots$, $w_m$ zu paarweise verschiedenen
+Eigenwerte $\lambda_1$, $\ldots$, $\lambda_m$ sind linear unabhängig.
+\end{lemma}
+\begin{proof}
+Mit Induktion über $m$. Für den Induktionsschritt betrachtet man eine
+Linearkombination $\sum_{i=0}^m \mu_i v_i = 0$. Dann gilt
+\begin{center}
+$0 = \lambda_1 \cdot \sum_{i=0}^m \mu_i v_i - F\left( \sum_{i=0}^m \mu_i v_i
+\right) = \sum_{i=0}^m (\lambda_1 \mu_i v_i-\lambda_i \mu_i v_i) =
+\sum_{i=1}^m (\lambda_1 - \lambda_i) \mu_i v_i$.
+\end{center}
+Nun kann man die Induktionsvoraussetzung verwenden.
+\end{proof}
+
+\begin{satz} Ein Endomorphismus von $V$ ist diagonalisierbar, wenn er paarweise
+verschiedene Eigenwerte $\lambda_1$, $\ldots$, $\lambda_n$ mit $n = \text{dim}
+V$ besitzt.
+\end{satz}
+\begin{proof}
+Folgt direkt aus dem obigen Lemma.
+\end{proof}
+
+\begin{definition} Für einen Endomorphismus $F$ von $V$ und ein $\lambda \in K$
+definieren wir den \textbf{Eigenraum} von $F$ bezüglich $\lambda$ als
+$\text{Eig}( F ; \lambda ) := \{ v \in V: F(v) = \lambda \cdot v \}$. (Dies ist
+in der Tat ein Unterraum von $V$.)
+\end{definition}
+
+\subsection{Das Charakteristische Polynom}
