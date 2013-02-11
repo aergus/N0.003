@@ -45,3 +45,49 @@ in der Tat ein Unterraum von $V$.)
 \end{definition}
 
 \subsection{Das Charakteristische Polynom}
+
+\begin{bemerkung} Folgende sind äquivalent:
+\begin{enumerate}[label=\roman*)]
+\item $\lambda$ ist Eigenwert von $F$,
+\item $\text{Eig}(F; \lambda) = \ker (F - \lambda \cdot \text{id}) \supsetneq
+\{ 0 \}$,
+\item $\det (F - \lambda \cdot \text {id}) = 0$.
+\end{enumerate}
+\end{bemerkung}
+
+\begin{definition} Für $A \in \text{M}_n(K)$ heißt $P_A := \det (A - t \cdot
+E_n) \in K[t]$ das \textbf{charakteristische Polynom} von $A$, wobei $t$ als
+unbestimmte bzw. ein Element von $K[t]$ aufzufassen ist.
+\end{definition}
+
+\begin{bemerkung} $\deg P_A = n$. Sei also $P_A = \sum_{i=0}^n \alpha_i t^i $.
+Dann gelten:
+\begin{enumerate}[label = \roman*)]
+\item $\alpha_n = (-1)^n$,
+\item $\alpha{n-1} = (-1)^{n-1} \cdot \text{Tr}(A) = (-1)^{n-1} \cdot
+\sum_{i=1}^n a_{ii}$,
+\item $\alpha_0 = \det A$.
+\end{enumerate}
+\end{bemerkung}
+
+\begin{lemma} Ähnliche Matrizen haben das gleiche charakteristische Polynom.
+\end{lemma}
+\begin{proof}
+Wegen $S \cdot t \cdot E_n \cdot S^{-1} = t \cdot E_n $ folgt
+für $A = S B S^{-1}$
+\begin{center}
+$\det (B - t \cdot E_n) = \det S \cdot \det (B - t \cdot E_) \cdot (\det S)^{-1}
+= \det ( SBS^{-1} - S \cdot t \cdot E_n cdot S^{-1}) =\det ( A - t \cdot E_n)$.
+\end{center}
+\end{proof}
+
+\begin{definition} Für einen Endomorphismus $F$ definiern wir $P_F :=
+P_{M_\mathcal{A}(F)}$ als das \textbf{charakteristische Polynom} von $F$, wobei
+$\mathcal{A}$ eine beliebige Basis ist. ($P_F$ ist nach dem obigen Lemma
+wohldefiniert.) Die dazugehörige Polynomfunktion nennen wir die \textbf{
+charakteristische Funktion} von $F$.
+\end{definition}
+
+\begin{bemerkung} $\text{Eig}(A;\lambda) =\text{Lös}(A - \lambda \cdot E_n, 0)$.
+\end{bemerkung}
+
