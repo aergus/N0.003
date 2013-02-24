@@ -1,0 +1,43 @@
+\subsection{Unabhängigkeit von Ereignissen}
+
+\begin{definition}
+Zwei Ereignisse heissen unabhängig, falls 
+\begin{center}
+$P[A \cap B]=P[A] \cdot P[B]$
+\end{center}
+gilt. \\
+Eine beliebige (nicht notwendig endlich oder abzählbar!) Kollektion von Ereignissen $A_i$ ($i \in I$) heisst unabhängig, falls 
+\begin{center}
+$P[A_{i_1} \cap ... \cap A_{i_n}]= \prod_{k=1}^n P[A_{i_k}]$ für alle $n \in \mathbb{N}$ und alle paarweise verschiedenen $i_1, ... , i_n \in I$ gilt.
+\end{center}
+\end{definition}
+
+\begin{satz}
+Sind die Ereignisse $A_1, ... , A_n \in A$ unabhängig und $B_j=A_j$ oder $B_j={A_j}^C$ für alle $j \in \{1, ... , n\}$, so sind auch die Ereignisse $B_1, ... , B_n$ unabhängig.
+\end{satz}
+
+Seien $A_1, A_2, ...$ unabhängige Ereignisse mit jeweils Wahrscheinlichkeit $p$.  Wir definieren die Wartezeit auf das erste Eintreten eines Ereignisses durch
+\begin{center}
+$T(\omega)=\min \{n \in \mathbb{N} : \omega \in A_n \}$
+\end{center}
+. \\
+Es gilt $P[T=n]=p \cdot (1-p)^{n-1}$.
+
+\begin{definition}
+Die Wahrscheinlichkeitsverteilung auf $\mathbb{N}$ mit Massenfunktion 
+\begin{center}
+$p(n)=p \cdot (1-p)^{n-1}$
+\end{center}
+heisst geometrische Verteilung zum Parameter $p$.
+\end{definition}
+
+Die Wahrscheinlichkeit, dass unter $n$ Ereignissen $k$ eintreten ist gleich der Binomialverteilung.
+
+Sei $S_n$ gleich der Anzahl der eingetretenen Ereignisse innerhalb der ersten $n$ Ereignisse.
+\begin{satz}
+(Bernstein-Ungleichung) \\
+\begin{center}
+$\forall \epsilon > 0 \forall n \in \mathbb{N} P[\frac{S_n}{n} \geq p + \epsilon] \leq e^{-2 \epsilon^2 n}$
+\end{center}
+(analog für $\geq p - \epsilon$)
+\end{satz}
