@@ -1,0 +1,39 @@
+\subsection{Zufallsvariablen und ihre Verteilung}
+\begin{definition}
+\begin{itemize}
+\item Eine \textbf{diskrete Zufallsvariable} ist eine Abbildung
+\[X:\Sigma \rightarrow S,\]
+wobei $S$ abz\"ahlbar sei.
+\item Die \textbf{Verteilung} von $X$ ist die Wahrscheinlichkeitsverteilung $\mu_X$ auf $S$ mit Gewichten
+\[p_X(a):=P[X^{-1}(a)]\]
+\end{itemize}
+\end{definition}
+\begin{bemerkung}
+Wir scheiben $\{X=a\}$ f\"ur $X^{-1}(a)$ und $P[X=a]$ statt $P[\{X=a\}]$.\\
+Ist $A\subseteq S$, so kann $\mu x(A)$ als die Wahrscheinlichkeit interpretiert werden, mit der ein Element aus $A$ ausgespuckt wird.
+\end{bemerkung}
+\subsection{Binomialverteilung}
+Motivation: Man zieht eine Kugel aus einer Urne mit $m$ Kugeln und legt sie wieder zur\"uck. Das macht man $n$ mal. Das mathematische Modell sieht folgenderma\ss en aus:\\
+Die Kugeln werden mit $1,2,...,m$ durchnummeriert. Die Menge dieser Kugeln sei $S:=\{1,2,...,m\}$\\
+Der Ereignisraum ist dann $\Omega=S^n$, ein Elementarereignis ist dann $(x_1,x_2,...,x_n)=\omega\in\Omega$, wobei $x_i\in S\forall i\in\{1,2,...,n\}$. (das sind die einzelnen Kugeln)\\
+Es wird angenommen, dass die $\omega$ gleichverteilt sind, dh. f\"ur alle $\omega,\omega'\in\Omega$ gilt $p(\omega)=p(\omega')=\frac 1{\lvert S\rvert^n}$.\\
+Die Funktion $X_i:\Omega\rightarrow S:\omega=(x_1,x_2,...,x_n)\rightarrow x_i$ gibt das $i$-te Ereignis zur\"uck, also die Kugel, die als $i$-tes gezogen wurde.\\
+Sei $E\subseteq S$ ein Teil der $m$ Kugeln mit einer besonderen Eigenschaft (schwarze Kugeln, etc.). Die Wahrscheinlichkeit, dass beim $i$-ten Zug eine solche Kugel gezogen wird, ist gerade
+\[P[x_i\in E]=\mu_{X_i}(E)=\frac{\lvert E\rvert}{\lvert S\rvert}=:p,\]
+was als Erfolgswahrscheinlichkeit bezeichnet wird.\\
+Die Wahrscheinlichkeit, dass dieser Erfolg $k$ mal eintritt, wobei $k\in\{1,...,n\}$, ist
+\[P[N=k]=\binom nkp^k(1-p)^{n-k}=:p_{n,p}(k)\]
+Ist dies die Massenfunktion einer Wahrscheinlichkeitsverteilng auf $\{0,...,n\}$, so hei\ss t diese Verteilung \textbf{Binomialverteilung} mit Parameter $n$ und $p$. Sie gibt aus, mit welcher Wahrscheinlichkeit bei $n$-maligem Ziehen aus einer Urne genau $k$ mal ein Erfolg gezogen wird.
+F\"ur kleine Erfolgswahrscheinlichkeiten $\frac\lambda n$ und gro\ss e $n$ n\"ahert sich die Binomialverteilung an die \textbf{Poissonverteilung} mit Parameter $\lambda$ an:
+\[p(k):=\frac{\lambda^k}{k!}e^{-\lambda}=\lim_{n\rightarrow\infty}p_{n,\frac\lambda n}(k)\]
+\subsection{Hypergeometrische Verteilung}
+Motivation: Man zieht eine Kugel aus einer Urne mit $m$ Kugeln ($r$ rote, $m-r$ schwarze) und legt sie nicht wieder zur\"uck. Das macht man $n$ mal. Das mathematische Modell ist im Wesentlichen analog zur Binomialverteilung. F\"ur die Ereignisse gilt diesmal zus\"atzlich $x_i\neq x_j\forall i,j\in\{1,...,m\}$. $N(\omega):=\text{Anzahl der roten Kugeln in }\omega$. Die Wahrscheinlichkeit, dass $N(\omega)=k$ ist ($k$ rote Kugeln in $\omega$), ist
+\[P[N=k]=\frac{\binom rk\binom{m-r}{n-k}}{\binom mn}\]
+f\"ur $k\in\{0,...,n\}$. Diese Verteilung hei\ss t \textbf{hypergeometrische Verteilung} mit Parametern $m,r,n$.\\
+F\"ur $n\rightarrow\infty$ n\"ahert sie sich an die Binoialverteilung an:
+\[P[N=k]\rightarrow\binom nk p^k(1-p)^k\]
+%%%
+%%%
+%%%
+%%%
+

@@ -1,0 +1,60 @@
+%%%
+%%%
+%%%
+%%%
+\subsection{Unabh\"angige Zufallsvariablen und Random Walk}
+\begin{definition}
+Seien $X_i:\Omega\rightarrow S_i,i\in\{1,...,n\}$ diskrete Zufallsvariablen auf dem Wahrscehinlichkeitsraum $(\Omega,A,P)$. Dann ist $(X_1,...,X_n):\Omega\rightarrow S_1\times...\times S_n$ eine Zufallsvariable.\\
+Die Verteilung des Zufallsvektors $(X_1,...,X_n)$ hei\ss t \textbf{gemeinsame Verteilung} der Zufallsvariablen $X_1,...,X_n$. Ihre Mssenunktion ist
+\[p_{X_1,...,X_n}(a_1,...,a_n)=P[X_1=a_1,...,X_n=a_n].\]
+Die diskreten Zufallsvariablen $(X_1,...,X_n)$ hei\ss en \textbf{unabh\"angig}, falls gilt
+\[P[X_1=a_1,...,X_n=a_n]=\prod_{i=1}^nP[x_i=a_i]\forall a_i\in S_i, i\in\{1,...,n\}\]
+Unendlich viele diskrete Zufallsvariablen $X_i:\Omega\rightarrow S_i, i\in I$ hei\ss en \textbf{unabh\"angig}, falls die Ereignisse $\{X_i=a_i\},i\in I$ f\"ur alle $a_i\in S$ unabh\"angig sind.
+\end{definition}
+\begin{satz}
+Die folgenden Aussagen sind \"aquivalent:
+\begin{itemize}
+\item $X_1,...,X_n$ sind unabh\"angig.
+\item $p_{X_1,...,X_n}(a_1,...,a_n)=\prod_{i=1}^np_{X_i}(a_i)$
+\item $\mu _{X_1,...,X_n}=\mu_{X_1}\times...\times\mu_{X_n}$
+\item Die Ereignisse $\{X_1\in A_1\},...,\{X_n\in A_n\}$ sind unabh\"angig f\"ur alle $A_i\subseteq S_i, i\in\{1,...,n\}$.
+\item Die Ereignisse $\{X_1=a_1\},...,\{X_1=a_1\}$ sind unabh\"angig f\"ur alle $a_i\in S_i,i\in\{1,...,n\}$
+\end{itemize}
+Dabei wird immer wieder dieselbe Aussage getroffen, f\"ur einzelne Werte der Zufallsvariablen, oder f\"ur Teilmengen von Werten der Zufallsvariablen.
+\end{satz}
+\subsubsection{Der Random Walk auf $\mathbb Z$}
+Wir laufen auf der Zahlengeraden mit ganzzahligen Eintr\"agen, beginnend beim Startwert $a$, mit Wahrscheinlichkeit $p$ um 1 vorw\"arts und mit Wahrscheinlichkeit $1-p$ um 1 r\"uckw\"arts. Die mathematische Modellierung ist wie folgt:
+Der Ereignisraum $\Omega$ ist die Menge aller Random Walks, also alle Folgen $(S_i)_{i\in\mathbb N}$, mit $S_0=a\in\mathbb Z$ und $\lvert S_j-S_{j+1}\rvert=1\forall j\in\mathbb N$.\\
+Der $i-1$-te Schritt wird durch die Zufallsvariable $X_i:\Omega\rightarrow \{-1,+1\}$ angegeben. Es gilt $P[X_i=+1]=p, P[X_i=-1]=1-p\forall i\in\mathbb N\backslash\{0\}, p\in(0,1)$. Dann gilt $S_0=a,S_{n+1}=S_n+X_{n+1}$. Induktiv folgt $S_n=a+\sum_{i=1}^nX_i$.\\
+Klar ist, dass man in einer geraden Anzahl von Schritten stets ein Element aus $a+2\mathbb Z$ erreicht und in einer ungeraden Anzahl von Schritten stets ein Element aus $a+1+2\mathbb Z$ erreicht. Es gilt
+\begin{lemma}
+Sei $k\in\mathbb Z$. Dann gilt
+\[P[S_n=a+k]=\left\{\begin{array}{ll} 0&falls\ n+k\ ungerade\ oder\ \lvert k\rvert>n,\\ \binom n{\frac{n+k}2}p^{\frac{n+k}2}(1-p)^{\frac{n-k}2}&sonst.\end{array}\right.\]
+\end{lemma}
+\subsubsection{Symmetrischer Random Walk}
+Wir betrachten nun den Fall $p=\frac 12$.\\
+Sei $\lambda\in\mathbb Z$ fest. Wir definieren die Zufallsvariable
+\[T_\lambda:\Omega\rightarrow mathbb N\cup\{\infty\}:\omega\mapsto T_\lambda(\omega):=\inf\{n\in\mathbb N\backslash\{0\}\mid S_n(\omega)=\lambda\}\]
+$T_\lambda(\omega)$ gibt den Zeitpunkt aus, an dem $\lambda$ zum ersten Mal in $\omega$ erreicht wird. Wir wollen $P[T_\lambda\leq n]=P\left[\\bigcup_{i=1}^{n}\{S_i=\lambda\}\right]$ berechnen, die Wahrscheinlichkeit, dass $\lambda$ innerhalb der ersten $n$ Schritte erreicht wird.\\
+Nach $n$ Schritten abbrechende Random Walks k\"onnen als Folgen mit $n$ Folgenglieder interpretiert werden, wobei wieder $S_0=a\in\mathbb Z$ und $\lvert S_j-S_{j+1}\rvert=1\forall j\in\{0,...,n-1\}$ gilt. Bei gegebenem Startwert $a$ gibt es genau $2^n$ verschiedene solche Random Walks. Jede solche Folge tritt dabei mit gleicher Wahrscheinlichkeit auf.
+\begin{satz}
+Reflektionsprinzip: Seien $\lambda, b\in\mathbb Z$. Es gelte entweder ($a<\lambda$ und $b\leq\lambda$) oder ($a>\lambda$ und $b\geq\lambda$) (dh. $a$ und $b$ liegen beide rechts oder beide links von $\lambda$). Dann gilt:
+\[P[T_\lambda\leq n,S_n=b]=P[S_n=b^\ast],\]
+wobei $b^\ast:=2\lambda-b$ die Spiegelung von $b$ an $\lambda$ ist. (Dann muss ja $2\lambda=b+b^\ast$ gelten)
+\end{satz}
+Der Satz besagt also, dass wenn man bereits $\lambda$ erreicht hat, dann ist die Wahrscheinlichkeit, dass man nach einem beliebigen Schritt insgesamt $k$ Schritte vorw\"arts gegangen ist, gleich der Wahrscheinlichkeit, dass man nach einem beliebigen Schritt insgesamt $k$ Schritte r\"uckw\"arts gegangen ist.
+\begin{satz}
+(Trefferzeitenverteilung) Wir erinnern, dass $a$ der Startwert des Random Walks ist. Es gilt
+\begin{itemize}
+\item \[P[T_\lambda\leq n]=\left\{\begin{array}{ll} P[S_n\geq\lambda]+P[S_n>\lambda],&falls\ \lambda>a\\ P[S_n\leq\lambda]+P[S_n<\lambda],&falls\ \lambda<a\end{array}\right.\]
+\item \[P[T_\lambda=n]=\left\{\begin{array}{ll}
+\frac 12P[S_{n-1}=\lambda-1]-\frac 12P[S_{n-1}=\lambda+1],&falls\ \lambda>a\\
+\frac 12P[S_{n-1}=\lambda+1]-\frac 12P[S_{n-1}=\lambda-1],&falls\ \lambda<a\end{array}\right.=\left\{\begin{array}{ll}
+\frac{\lambda-a}n\binom n{\frac{n+\lambda-a}2}2^{-n},&falls\ \lambda>a\\
+\frac{a-\lambda}n\binom n{\frac{n+\lambda-a}2}2^{-n},&falls\ \lambda<a\end{array}\right.\]
+\end{itemize}
+\end{satz}
+\begin{korollar}
+(Verteilung des Maximums) Sei $M_n:=\max\{S_0,...,S_n\}$. F\"ur $\lambda>a$ gilt
+\[P[M_n\geq\lambda ]=P[T_\lambda\leq n]=P[S_n\geq\lambda]+P[S_n>\lambda]\]
+\end{korollar}
