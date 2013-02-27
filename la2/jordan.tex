@@ -1,0 +1,53 @@
+\subsection{Die Jordansche Normalform}
+
+Zerfällt $P_F$ in Linearfaktoren, so ist V (wie wir bereits wissen) genau dann direkte Summe der F-invarianten Eigenräume $Eig(F, \lambda_i)$, wenn
+\begin{center}
+$\dim Eig(F, \lambda_i)=\mu(P_F, \lambda_i)=r_i$
+\end{center}
+. Ist die Dimension des Eigenraumes zu klein, betrachten wir stattdessen den
+\begin{definition}
+Hauptraum $Hau(F, \lambda)=\ker (F-\lambda id_v)^r$
+\end{definition}
+, wobei $Eig(F,\lambda) \subseteq Hau(F,\lambda)$ gilt.
+
+\begin{satz}
+Satz über die Hauptraumzerlegung \\
+Sei $F \in End_K(V)$ und 
+\begin{center}
+$P_F= \pm (t-\lambda_1)^{r_1} \cdot ... \cdot (t-\lambda_k)^{r_k}$
+\end{center}
+mit paarweise verschiedenen $\lambda_1 , ... , \lambda_k \in K$. Es sei $V_i = Hau(F, \lambda_i \subset V$ für jedes $\lambda_i$ der Hauptraum. Dann gilt:
+\begin{itemize}
+\item $F(V_i) \subset V_i$ und $\dim Vi = r_i$ für $i=1, ... , k$.
+\item $V= V_1 \oplus ... \oplus V_k$
+\item $F$ hat eine Zerlegung $F=F_D + F_N$ mit
+\begin{itemize}
+\item $F_D$ diagonalisierbar.
+\item $F_N$ nilpotent.
+\item $F_D \circ F_N = F_N \circ F_D$.
+\end{itemize}
+\end{itemize}
+\end{satz}
+
+Wir betrachten nun einen Eigenwert $\lambda$ von $F$ und Potenzen von 
+\begin{center}
+$G=F-\lambda id_V$
+\end{center}
+.
+
+\begin{satz}
+Lemma von FITTING \\
+Zu einem $G \in End_K(V)$ betrachten wir die beiden Zahlen
+\begin{center}
+$d = \min \{l \in \mathbb{N}: \ker G^l = Ker G^{l+1} \}$ und $r=\mu(P_G, 0)$
+\end{center}
+wobei $G^0 = id_V$. Dann gilt:
+\begin{itemize}
+\item $d=\min \{l: Im(G^l) = Im(G^{l+1})\}$
+\item $\ker G^{d+i}=\ker G^d$, $Im(G^{d+1} = Im(G^d)$ für alle $i \in \mathbb{N}$
+\item Die Räume $U=\ker G^d$ und $W=Im(G^d)$ sind G-invariant.
+\item $(G \mid U)^d=0$ und $G \mid W : W \to W$ ist ein Isomorphismus.
+\item Für das Minimalpolynom von $G \mid U$ gilt $M_{G \mid U} = t^d$.
+\item $V=U\oplus W$, $\dim U = r \geq d$, $\dim W = n-r$
+\end{itemize}
+\end{satz}
