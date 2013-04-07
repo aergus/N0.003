@@ -1,0 +1,63 @@
+\subsection{Bedingte Wahrscheinlichkeiten}
+
+\begin{definition} F\"ur Ereignisse $A$ und $B$ eines Wahrscheinlichkeitsraums
+$(\Omega, \mathcal{A}, P)$ mit $P[B] \neq 0$ hei\ss t
+\begin{eqnarray}
+P[A|B]:=\frac{P[A \cap B]}{P[B]} \nonumber
+\end{eqnarray}
+die \textbf{bedingte Wahrscheinlichkeit von $A$ gegeben $B$} ("`die
+Wahrscheinlichkeit daf\"ur, dass $A$ eintritt, wenn wir schon wissen, dass $B$
+eintritt"').
+\end{definition}
+
+\begin{bemerkung} \quad
+\begin{itemize}
+\item $P[\blacktriangle|B]: A \mapsto P[A|B]$ ist eine
+Wahrscheinlichkeitsverteilung auf $(\Omega, \mathcal{A})$, die \textbf{bedingte
+Verteilung gegeben $B$}.
+\item Der Erwartungswert $E[X|B] = \sum_{a \in S} a \cdot P[X=a|B]$ einer
+diskreten Zufallsvariable $X:\Omega \rightarrow S$ bez\"uglich der bedingten
+Verteilung hei\ss t \textbf{bedingte Erwartung von $X$ gegeben $B$}.
+\item Im Fall der Gleichverteilung auf einer endlichen Menge gilt $P[A|B] = 
+\frac{|A\cap B|}{|B|}$.
+\end{itemize}
+\end{bemerkung}
+
+\subsubsection{Berechnung von Wahrscheinlichkeiten durch Fallunterscheidung}
+Im Folgenden sei $\Omega = \dot{\bigcup} H_i$ eine disjunkte Zerlegung von $\Omega$
+in abz\"ahlbar viele F\"alle ("`Hypothesen"').
+
+\begin{satz} F\"ur alle $A \in \mathcal{A}$ gilt $P[A] = \sum_{i \in I, P[H_i]
+\neq 0} P[A|H_i] \cdot P[H_i]$.
+\end{satz}
+\begin{proof} Man verwendet die $\sigma$-Additivi\"at und rechnet rum.
+\end{proof}
+
+Die Zerlegung in Hypothesen kann eventuell mehr Information als der
+Gesamt\"uberblick der Situation liefern (vgl. "`Simpson-Paradoxon"' bei
+Bewerbungen in Berkeley).
+
+\subsubsection{Bayessche Regel}
+Wenn man wissen will, wie wahrscheinlich die Hypothesen $H_i$ sind, kann man
+zuerst $P[H_i]$ einsch\"atzen ("`a priori defree of belief"'). Wenn man dann
+zus\"atzlich wei\ss , dass ein Ereignis $A \in \mathcal{A}$ mit $P[A] \neq 0$
+eintritt und die bedingte Wahrscheinlichkeit $P[A|H_i]$ ("`likelyhood") f\"ur
+jedes $H_i$ kennt, dann kann man eine neue Einsch\"atzung ("`a posteriori
+degree of belief") erhalten, und zwar gem\"a\ss\ dem folgenden
+
+\begin{korollar} (Bayessche Regel). F\"ur $A \in \mathcal{A}$ mit $P[A] \neq 0$
+gilt
+\begin{eqnarray}
+P[H_i|A] = \frac{P[A|H_i] \cdot P[H_i]}{\sum_{j \in I, P[H_j] \neq 0} P[A|H_j]
+\cdot P[H_j]} \nonumber
+\end{eqnarray}
+f\"ur alle $i \in I$ mit $P[H_i] \neq 0$, d.h. $P[H_i|A]=c \cdot P[H_i] \cdot
+P[A|H_i]$, wobei $c$ eine von $i$ unabh\"angige Konstante ist.
+\end{korollar}
+
+(Man sch\"atzt $P[H_i]$ ein. Mit Hilfe von der obigen Formel rechnet man dann
+aus $P[A]$ und den "`likelyhoods"' die "`neue"' Einsch\"atzung $P[H_i|A]$. Also
+erh\"alt man theoretisch keine neue Information, aber diese
+"`Wahrscheinlichkeiten"' sind h\"aufig nur empirische Werte und in dem Fall
+kann man mit dieser Formel die bedingten Wahrscheinlichkeiten $P[H_i|A]$
+einschh\"atzen.)
