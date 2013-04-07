@@ -1,0 +1,71 @@
+\subsection{Monte Carlo-Verfahren}
+Sei $S$ eine abz\"ahlbare Menge und $\mu$ eine Wahrscheinlichkeitsverteilung
+auf $S$. Im folgenden bezeichnen wir auch die Massenfunktion mit $\mu$, d.h.
+$\mu (x) := \mu (\{x\}) $ f\"ur alle $x \in S$. \\
+
+Sei $f:S \rightarrow \mathbb{R}$ mit $E_\mu[f^2] = \sum_{x\in S} f(x)^2 \mu (x)
+< \infty$. Dann kann man den Erwartungswert $\theta := E_\mu[f] = \sum_{x\in S}
+f(x) \mu (x)$ durch die \emph{Monte Carlo-Sch\"atzer} 
+\begin{eqnarray}
+\widehat{\theta}_n  := \frac{1}{n} \sum_{i=1}^n f(X_i) \nonumber
+\end{eqnarray} 
+approximieren, wobei $X_1, \ldots, X_n$ unabh\"angige Zufallsvariablen auf
+einem Wahrscheinlichkeitsraum $(\Omega, \mathcal{A}, P)$ mit Verteilung $\mu$
+sind. Die Absch\"atzung aus dem Gesetz der gro\ss en Zahlen gibt uns f\"ur
+diese Folge das folgende
+
+\begin{korollar} $P[|\theta - \widehat{\theta}_n| \geq \varepsilon] \leq
+\frac{1}{n \varepsilon^2 \Var_\mu[f]} \longrightarrow 0$ f\"ur $n \rightarrow
+\infty$, d.h. $\widehat{\theta}_n$ ist eine \textbf{konsistente Sch\"atzfolge}
+f\"ur $\theta$.
+\end{korollar}
+
+\begin{bemerkung} \quad
+\begin{itemize}
+\item $\widehat{\theta}_n$ ist ein erwartungstreuer Sch\"atzer:
+\begin{center}
+$E[\widehat{\theta}_n] = \frac{1}{n} \sum_{i=1}^n E[f(X_i)] = E_\mu[f] = 
+\theta$,
+\end{center}
+\item F\"ur den mittleren quadratischen Fehler gilt
+\begin{center}
+$E[|\theta - \widehat{\theta}_n|^2] = \Var(\widehat{\theta}_n) = \frac{1}{n}
+\Var_\mu[f]$,
+\end{center}
+also insbesondere $\| \theta - \widehat{\theta}_n \|_{\mathcal{L}^2} = \sqrt{
+E[|\theta - \widehat{\theta}_n|^2]} = O(1/\sqrt{n})$.
+\end{itemize}
+\end{bemerkung}
+
+\begin{beispiel} Sei $B \subseteq S$. F\"ur $p = \mu(B) = E_\mu[I_B]$ ist dann
+$\widehat{p}_n = \frac{1}{n} \sum_{i=1}^n I_B(X_i)$ ein Monte Carlo-Sch\"atzer.
+\end{beispiel}
+
+\begin{bemerkung} F\"ur  kleine Wahrscheinlichkeiten braucht dieses einfache
+Monte Carlo-Verfahren sehr viele Stichproben, wenn man die Wahrscheinlichkeit
+mit einem kleinem Fehler bestimmen will.
+\end{bemerkung}
+
+\subsubsection{Varianzreduktion durch Importance Sampling}
+Sei $\nu$ eine weitere Wahrscheinlichkeitsverteilung auf $S$ mit $\nu(x) > 0$
+f\"ur alle $x \in S$. Dann kann man $\theta$ auch bez\"uglich $\nu$
+ausdr\"ucken:
+\begin{eqnarray}
+\theta = E_\mu[f] = \sum_{x\in S} f(x) \mu(x) = \sum_{x\in S} f(x)
+\frac{\mu(x)}{\nu(x)} \nu(x) = E_\nu[f \rho], \nonumber
+\end{eqnarray}
+wobei $\rho(x) = \frac{\mu(x)}{\nu(x)}$. \\
+
+Ein alternativer Monte Carlo-Sch\"atzer f\"ur $\theta$ ist folglich
+$\widetilde{\theta}_n = \frac{1}{n} \sum_{i=1}^n f(Y_i) \rho(Y_i)$, wobei die
+$Y_i$ unabh\"angige Zufallsvariablen mit Verteilung $\nu$ sind. \\
+
+$\widetilde{\theta}_n$ ist ebenfalls erwartungstreu. F\"ur die Varianz
+erh\"alt man
+\begin{eqnarray}
+\Var(\widetilde{\theta}_n) = \frac{1}{n} \Var_\nu(f \rho) = \frac{1}{n} \left(
+\sum_{x \in S} f(x)^2 \rho(x)^2\nu(x) - \theta^2 \right). \nonumber
+\end{eqnarray}
+Bei geigneter Wahl von $\nu$ kann also die Varianz von $\widetilde{\theta}_n$
+kleiner sein als die von $\widehat{\theta}_n$. ($\nu (x)$ soll gro\ss\ sein,
+wenn $|f(x)|$ gro\ss\ ist.)
