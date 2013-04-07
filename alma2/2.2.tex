@@ -1,0 +1,96 @@
+\subsection{Mehrstufige diskrete Modelle}
+F\"ur ein $n$-stufiges Zufallsexperiment mit abz\"ahlbaren Stichprobenr\"aume
+$\Omega_1$, $\ldots$,  $\Omega_n$ von Teilexperimenten kann $\Omega = \prod
+\Omega_i$ als der Stichprobenraum des Gesamtexperiments aufgefasst werden. \\
+
+F\"ur $\omega \in \Omega$ und $k \in \{1, \ldots, n \}$ sei $X_k(\omega) =
+\omega_k$ der Ausgang des $k$-ten Experiments. Angenommen, wir kennen $P[X_1 = 
+x_1] = p_1(x_1)$ f\"ur alle $x_1 \in \Omega_1$ und $P[X_k=x_k|X_1=x_1, \ldots,
+X_{k-1}=x_{k-1}] = p_k(x_k|x_1, \ldots, x_{k-1})$ f\"ur alle $k \in \{ 1,
+\ldots, n \}$. Dann k\"onnen wir die gesamte Wahrscheinlichkeitsverteilung
+$P$ auf $\Omega$ folgenderma\ss en erhalten:
+
+\begin{satz} Seien $p_1$ und $p_k(\blacktriangle|x_1, \ldots, x_{k+1})$ f\"ur
+jedes $k=2, \ldots, n$ und $x_i \in \Omega_i$ die Massenfunktion einer
+Wahrscheinlichkeitsverteilung auf $\Omega_k$. Dann existiert genau eine
+Wahrscheinlichkeitsverteilung $P$ auf $(\Omega, \mathcal{P}(\Omega ))$, die die
+obige Eigenschaften hat. Diese ist bestimmt durch die Massenfunktion
+\begin{center}
+$p(x_1, \ldots, x_n) = p_1(x_1) p_2(x_2 | x_1) p_3(x_3 | x_1, x_2) \cdots p_n(
+x_n | x_1, \ldots, x_{n-1})$.
+\end{center}
+\end{satz}
+\begin{proof} Rumrechnerei. Die Eindeutigkeit folgt aus der Existenz.
+\end{proof}
+
+\subsubsection{Produktmodelle}
+Ist der Ausgang des $i$-ten Experiments unabh\"angig von $x_1,\ldots ,x_{i-1}$,
+so gilt $p_i(x_i|x_1, \ldots, x_{i-1}) = p_i(x_i)$ mit einer von $x_1,\ldots ,
+x_{i-1}$ unabh\"angigen Massenfunktion $p_i$ einer
+Wahrscheinlichkeitsverteilung $P_i$ auf $\Omega_i$. In diesem Fall gilt
+$p(x_1, \ldots, x_n) = \prod_{i=1}^n p_i(x_i)$ f\"ur alle $(x_1, \ldots, x_n)
+\Omega$.
+
+\begin{definition} Die Wahrscheinlichkeitsverteilung $P$ auf $\Omega = \prod
+\Omega_i$ mit obiger Massenfunktion hei\ss t \textbf{Produkt} von $P_1$,
+$\ldots$, $P_n$ und wird mit $P_1 \otimes \ldots \otimes P_n$ notiert.
+\end{definition}
+
+\begin{beispiel} Bernouilliverteilung.
+\end{beispiel}
+
+\begin{satz} Im Produktmodell gilt f\"ur beliebige Ereignisse $A_i \subseteq
+\Omega_i$
+\begin{eqnarray}
+P[A_1 \times \ldots \ A_n] = P[X_1 \in A_1, \ldots, X_n \in A_n] =
+\prod_{i=1}^n P[X_i \in A_i] = \prod_{i=1}^n P_i[A_i], \nonumber
+\end{eqnarray}
+d.h. $X_1, \ldots, X_n$ sind unabh\"angige Zufallsvariablen (s. n\"achstes
+Kapitel).
+\end{satz}
+\begin{proof} Rechnung.
+\end{proof}
+
+\subsubsection{Markov-Ketten}
+Wir wollen eine zufa\"allige Entwicklung mit abz\"ahlbarem Zustandsraum $S$
+modellieren. Dazu betrachten wir den Stichprobenraum $\Omega = S^{n+1}$.
+H\"aufig h\"angt die Weiterentwicklung des Systems nur vom gegenw\"artigen
+Zustand ab, d.h. es gilt $p_k(x_k| x_0, \ldots, x_{k-1}) = p_k(x_{k-1}, x_k)$
+("`Bewegungsgesetz"'), wobei f\"ur $p_k: S \times S \rightarrow [0,1]$
+\begin{enumerate}
+\item $p_k(x,y) \geq 0$ f\"ur alle $x,y \in S$ und
+\item $\sum_{y \in S} p_k(x,y) = 1$
+\end{enumerate}
+gelten. (Dies bedeutet, dass $p_k(x, \blacktriangle)$ f\"ur jedes $x \in S$ die
+Massenfunktion einer Wahrscheinlichkeitsverteilung auf $S$ ist.)
+
+\begin{definition} Eine "`Matrix"' $p_k(x,y)$ mit den obigen Eigenschaften
+hei\ss t \textbf{stochastische Matrix} (oder \textbf{stochastischer Kern}) auf
+$S$. \\
+(Im Mehrstufenmodell gilt in dieser Situation $p(x_0, \ldots, x_n) = p_0(x_0)
+p_1(x_1,x_2) \cdots p_n(x_{n-1}, x_n)$.) \\
+Der Fall, in dem $p_k(x,y) = p(x,y)$ unabh\"angig von $k$ ist, nennt man
+\textbf{zeitlich homogen}.
+\end{definition}
+
+\begin{beispiel} \quad
+\begin{itemize}
+\item Produktmodell
+\item Random Walk auf $\mathbb{Z}^d$
+\item Urnenmodelle
+\end{itemize}
+\end{beispiel}
+
+\subsubsection{Berechnung von Wahrscheinlichkeiten}
+
+\begin{satz} (Markov-Eigenschaft) F\"ur alle $0 \leq k < l \leq n$ und $x_0,
+\ldots, x_l \in S$ mit $P[X_0 = x_0, \ldots , X_k = x_k ] \neq 0$ gilt
+\begin{eqnarray}
+P[X_l = x_l | X_0=x_0, \ldots, X_k] = P[X_l = x_l | X_k = x_k] =
+(p_{k+1}p_{k+2} \cdots p_l)(x_k,x_l), \nonumber
+\end{eqnarray}
+wobei $(pq)(x,y):=\sum_{z\in S} p(x,z) q(z,y)$ das Produkt der Matrizen $p$ und
+$q$ ist.
+\end{satz}
+\begin{proof} Indexschlacht und Rechnungskampf.
+\end{proof}
