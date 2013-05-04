@@ -1,0 +1,97 @@
+\subsection{Varianz und Kovarianz}
+
+Sei $(\Omega,\mathcal{A},P)$ ein Wahrscheinlichkeitsraum und $X:\Omega\rightarrow S$
+eine Zufallsvariable auf $(\Omega,\mathcal{A},P)$, so dass   $E[|X|]$
+endlich ist.
+
+\begin{definition}
+
+\[
+Var(X):=E[(X-E[X])^{2}]
+\]
+
+
+hei\ss t $\mathbf{Varianz}$ von $X$ und liegt in $[0,\infty]$.
+
+\[
+\sigma(X):=Var(X)^{1/2}
+\]
+
+
+hei\ss t $\mathbf{Standardabweichung}$von $X$.
+
+\end{definition}
+
+Interpretation: Kennzahl f\"ur die Gr\"o\ss e der Fluktuationen von $X$
+um $E[X]$; Ma\ss  f\"ur Risiko bei Prognose des Ausgangs $X(\omega)$
+durch $E[X]$.
+
+\begin{bemerkung}
+\begin{itemize}
+\item $Var(X)=\sum_{a\in S}(a-m)^{2}p_{X}(a)$, wobei $m=E[X]=\sum_{a\in S}a\sum_{a}p_{X}(a)$.
+\item $Var(X)=0$ gdw. $P[X=E[X]]=1${]}.
+\item $Var(X)=E[X^{2}]-E[X]^{2}$.
+\item $Var(aX+b)=Var(aX)=a^{2}Var(X)$.
+\end{itemize}
+\end{bemerkung}
+\begin{beispiel}
+\begin{itemize}
+\item Sei $X=1$ mit Wahrscheinlichkeit $p$ und $X=0$ mit Wahrscheinlichkeit
+$1-p$. Dann ist $Var(X)=p(1-p)$.
+\item Sei $T$ geometrisch verteilt mit Parameter $p\in(0,1].$ Dann ist
+$Var(T)=\frac{1-p}{p^{2}}$.
+\end{itemize}
+\end{beispiel}
+\begin{definition}
+
+\[
+\mathcal{L}^{2}(\Omega,\mathcal{A},P):=\{X:\Omega\rightarrow\mathbb{R}|E[X^{2}]<\infty\}
+\]
+
+\end{definition}
+\begin{lemma} 
+\begin{itemize}
+\item F\"ur Zufallsvariablen $X,Y\in\mathcal{L}^{2}$gilt: $E[|XY|]\leq E[X^{2}]^{1/2}E[Y^{2}]^{1/2}<\infty$
+\item $\mathcal{L}^{2}$ ist ein Vektorraum und $(X,Y)_{\mathcal{L}^{2}}:=E[XY]$
+ist eine positiv semidefinite symmetrische Bilinearform (Skalarprodukt)
+auf $\mathcal{L}^{2}$. Insbesondere gilt die Cauchy-Schwarz-Ungleichung.
+\item F\"ur $X\in\mathcal{L}^{2}$ gilt $E[|X|]<\infty$
+\end{itemize}
+\end{lemma}
+\begin{definition}
+
+Seien $X,Y\in\mathcal{L}^{2}$.
+\begin{itemize}
+\item $Cov(X,Y):=E[(X-E[X])(Y-E[X])]=E[XY]-E[X]E[Y]$ hei\ss t $\mathbf{Kovarianz}$
+von X und Y.
+\item Gilt $\sigma(X),\sigma(Y)\neq0$, so hei\ss t $\varrho(X,Y):=\frac{Cov(X,Y)}{\sigma(X)\sigma(Y)}$
+$\mathbf{Korrelationskoeffizient}$von X und Y.
+\item X und Y hei\ss en $\mathbf{unkorreliert}$, falls $Cov(X,Y)=0$, d.h
+falls $E[XY]=E[X]\cdot E[Y]$.
+\end{itemize}
+\end{definition}
+\begin{satz}
+
+Seien $X:\Omega\rightarrow S$ und $Y:\Omega\rightarrow T$ diskrete
+Zufallsvariablen auf $(\Omega,\mathcal{A},P)$. Dann sind \"aquivalent:
+\begin{itemize}
+\item X und Y sind unabh\"angig
+\item f(X) und g(Y) sind unkorreliert f\"ur alle Funktionen $f:S\rightarrow\mathbb{R}$
+und $g:T\rightarrow\mathbb{R}$ mit $f(X),g(Y)\in\mathcal{L}^{2}$.
+\end{itemize}
+\end{satz}
+\begin{beispiel} 
+Sei $X=1,0,-1$, jeweils mit Wahrscheinlichkeit $\frac{1}{3}$,
+und $Y=X^{2}$. Dann sind $X$ und $Y$ nicht unabh\"angig, aber unkorreliert.
+Intuition: Unkorelliertheit bedeutet nur kein linearer Zusammenhhang.
+Hier liegt ein quadratischer Zusammenhang vor.
+\end{beispiel}
+\begin{satz}
+
+F\"ur $X_{1},...,X_{n}\in\mathcal{L}^{2}$ gilt:
+
+\[
+Var(X_{1}+...+X_{n})=\sum_{i=1}^{n}Var(X_{i})+2\sum_{i,j=1,i<j}^{n}Cov(X_{i},X_{j})
+\]
+\end{satz}
+\end{document}
